@@ -7,15 +7,15 @@ const Search = () => {
     const [categoriesData, setCategoriesData] = useState('')
 
     useEffect(() => {
-        const fetch = async () => {
-            const res = await axios.get('http://localhost:3000/categories')
+        const fetchData = async () => {
+            const res = await axios.get('http://localhost:8080/categories')
+            console.log(res);
             setCategoriesData(res.data)
         }
-        fetch()
+        fetchData()
     }, [categoriesData])
     return (
         <div className="search">
-            {console.log(categoriesData)}
             {categoriesData && categoriesData.map(({ id, title, numberOfItem, image }) => (
                 <div key={id} className="box">
                     <div className="image-box">
